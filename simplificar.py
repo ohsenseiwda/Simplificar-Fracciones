@@ -1,41 +1,26 @@
 from tkinter import *
-#Esta app es un proyecto para simplificar fracciones.
-#Muy simple y facil de usar.
+
 def simplificar():
-#Almaceno las variables del que vienen -cuadroTexto1 y -cuadroTexto2 en -aux1 y -aux2 para luego con el condicional -IF verificar si el valor ingresado por el usuario es de valor NUMERICO o ALFANUMERICO.
 	aux1=cuadroTexto1.get()
 	aux2=cuadroTexto2.get()
-#La variable -va incrementa su valor mas adelante
-	va=2
-#Aqui este -IF verifica que los valores sean digitos para asi realizar los calculos, de no ser digitos, la funcion devuelve nada, creo. jeje.
+	x=2
 	if aux1.isdigit() and aux2.isdigit():
-#Aqui se convierten las variables digitales en un valor entero -INT.
 		num1=int(aux1)
 		num2=int(aux2)
-#Este bucle -FOR se repite 101 veces, incrementando el valor de -va en 1 por cada vuelta.
-		for i in range(1,100):
-#Esta parte es dificil de explicar, pero basicamente esta parte es para comprobar si el valor luego de dividirlo y multiplicarlo da como resultado el numero inicial, o con decimales.
-			valorA1=int(num1/va)
-			valor1=valorA1*va
-			valorA2 =int(num2/va)
-			valor2=valorA2*va
-#Este -IF comprueba que el valor es divisible sin que de como resultado un numero con decimales.
-			if valor1 == num1 and valor2 == num2 and valor1 != 0 and valor2 != 0:
-				num1=int(num1/va)
-				num2=int(num2/va)
-#Si el valor da como resultado un valor incorrecto, se lanza este -ELSE.
+		for i in range(1,1000):
+			valor1=num1%x
+			valor2=num2%x
+			if valor1 == 0 and valor2 == 0:
+				num1=int(num1/x)
+				num2=int(num2/x)
 			else:
-#Aqui el -va aumenta su valor original en 1
-				va=va+1
-#este -IF sirve para mostar cuando la fraccion da como resultado un valor con denominador 1 mostrando solo el numerador.
+				x=x+1
 		if num2 == 1:
 			resultado=str(num1)
-#Este -ELSE muestra el resultado en caso de no cumplirse la condicion anterior.
 		else:
 			resultado=str(num1)+"/"+str(num2)
 		return var.set(resultado)
 
-#Desde aca en adelante ya no explicare porque me da pereza jajaj
 raiz=Tk()
 raiz.title("Simplificar Fracciones")
 raiz.config(bg="#32081D")
@@ -44,7 +29,6 @@ var=IntVar()
 miFrame=Frame(raiz)
 miFrame.pack(padx=50,pady=500)
 miFrame.config(bg="#003D52")
-#Por si acaso prueban este codigo en PC y no se ve correctamente, quitar el '#'' de la siguente linea.
 #miFrame.config(width="720",height="720")
 miFrame.config(bd="15")
 miFrame.config(relief="groove")
